@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="min-h-screen bg-gradient">
+        <div class="container">
+            <!-- Header -->
+            <div class="header">
+                <h1>My Tasks</h1>
+                <div class="task-count">0 of 0 tasks completed</div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 0%"></div>
+            </div>
+
+            <!-- Add New Task Form -->
+            <div class="add-task-form">
+                <h3><i data-lucide="plus"></i> Add New Task</h3>
+                <div class="form-grid">
+                    <input type="text" id="taskTitle" placeholder="Task title..." class="form-input">
+                    <input type="text" id="taskDescription" placeholder="Description (optional)..." class="form-input">
+                    <select id="taskCategory" class="form-input">
+                        <option value="Personal">Personal</option>
+                        <option value="Work">Work</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Health">Health</option>
+                        <option value="Education">Education</option>
+                    </select>
+                    <select id="taskPriority" class="form-input">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <option value="Urgent">Urgent</option>
+                    </select>
+                    <input type="date" id="taskDueDate" class="form-input">
+                    <button id="addTaskBtn" class="btn-primary">
+                        <i data-lucide="plus"></i>
+                        Add Task
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters and Sorting -->
+            <div class="filters-section">
+                <div class="filter-group">
+                    <i data-lucide="filter"></i>
+                    <span>Filter:</span>
+                    <div class="filter-buttons" id="filterButtons">
+                        <button class="filter-btn active" data-filter="All">All</button>
+                        <button class="filter-btn" data-filter="Active">Active</button>
+                        <button class="filter-btn" data-filter="Completed">Completed</button>
+                        <button class="filter-btn" data-filter="Overdue">Overdue</button>
+                        <button class="filter-btn" data-filter="Personal">Personal</button>
+                        <button class="filter-btn" data-filter="Work">Work</button>
+                        <button class="filter-btn" data-filter="Shopping">Shopping</button>
+                        <button class="filter-btn" data-filter="Health">Health</button>
+                        <button class="filter-btn" data-filter="Education">Education</button>
+                    </div>
+                </div>
+                <div class="sort-group">
+                    <span>Sort:</span>
+                    <select id="sortSelect" class="sort-select">
+                        <option value="created">Created Date</option>
+                        <option value="priority">Priority</option>
+                        <option value="dueDate">Due Date</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Task List -->
+            <div id="taskList" class="task-list">
+                <!-- Tasks will be inserted here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Task Template -->
+    <template id="taskTemplate">
+    <div class="task-item">
+        <div class="task-content">
+            <button class="complete-btn">
+                <i data-lucide="check" class="check-icon"></i>
+            </button>
+            <div class="task-details">
+                <h3 class="task-title"></h3>
+                <p class="task-description"></p>
+                <div class="task-meta">
+                    <span class="priority-badge"></span>
+                    <span class="category-badge"></span>
+                    <span class="due-date-badge">
+                        <i data-lucide="calendar"></i>
+                        <span class="due-text"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="task-actions">
+                <button class="action-btn edit-btn">
+                    <i data-lucide="edit-2"></i>
+                </button>
+                <button class="action-btn delete-btn">
+                    <i data-lucide="trash-2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+    <script src="js/app.js"></script>
+</body>
+</html>
